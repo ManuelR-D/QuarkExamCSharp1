@@ -10,7 +10,7 @@ using System.Text.Json.Nodes;
 
 namespace ExamenModuloC.Model
 {
-    internal class TiendaDaoMySQL : Interface.ITiendaDAO
+    internal class TiendaDaoMySQL : Interface.ICrudDao<ITiendaDTO>
     {
         private String connectionString;
 

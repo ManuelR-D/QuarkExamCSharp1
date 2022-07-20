@@ -5,9 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Text.Json.Nodes;
+
 namespace ExamenModuloC.Model
 {
-    internal class PrendaDaoMySQL : Interface.IPrendaDAO
+    internal class PrendaDaoMySQL : Interface.ICrudDao<IPrenda>
     {
         private String connectionString;
 
@@ -31,6 +33,7 @@ namespace ExamenModuloC.Model
         {
             int prendaId = 0;
             string? json = "";
+            IPrenda? prenda;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -52,15 +55,17 @@ namespace ExamenModuloC.Model
                     }
                     json = registers["prenda"].ToString();
                 }
+                if (json == null)
+                    json = "";
+                JsonNode jsonObject = JsonNode.Parse(json);
+                prenda = Presenter.Utils.PrendaFactory.getPrendaFromJson(jsonObject);
+                if (prenda == null)
+                {
+                    throw new Exceptions.NoSuchPrendaException();
+                }
                 connection.Close();
             }
-            if (json == null)
-                json = "";
-            IPrenda prenda = System.Text.Json.JsonSerializer.Deserialize<IPrenda>(json);
-            if (prenda == null)
-            {
-                throw new Exceptions.NoSuchPrendaException();
-            }
+            
             return prenda;
         }
         public IPrenda save(IPrenda prenda)

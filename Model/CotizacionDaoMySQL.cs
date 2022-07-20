@@ -9,7 +9,7 @@ using System.Text.Json.Nodes;
 
 namespace ExamenModuloC.Model
 {
-    internal class CotizacionDaoMySQL : Interface.ICotizacionDAO
+    internal class CotizacionDaoMySQL : Interface.ICrudDao<ICotizacionDTO>
     {
         private String connectionString;
 

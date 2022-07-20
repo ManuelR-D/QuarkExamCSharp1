@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace ExamenModuloC.Model
 {
-    internal class VendedorDaoMySQL : Interface.IVendedorDAO
+    internal class VendedorDaoMySQL : Interface.ICrudDao<IVendedorDTO>
     {
         private String connectionString;
 
