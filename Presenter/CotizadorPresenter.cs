@@ -13,15 +13,28 @@ namespace ExamenModuloC.Presenter
     {
         public CotizadorPresenter(IViewCotizador view)
         {
-            if(view.getCantidad() > view.getStock())
+            try
             {
-                MessageBox.Show("La cantidad a cotizar es mayor que el stock disponible del producto", "Stock insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (view.getCantidad() > view.getStock())
+                {
+                    MessageBox.Show("La cantidad a cotizar es mayor que el stock disponible del producto", "Stock insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            } catch (Exception e)
+            {
                 return;
             }
+            
             int id = view.getIdVendedor();
             IVendedorDTO vendedorDTO = new VendedorDaoMySQL(Program.CONNECTION_STRING).get(id);
             IPrenda prenda = Utils.PrendaFactory.getPrendaFromView(view);
-            prenda.UnitPrice = view.getUnitPrice();
+            try
+            {
+                prenda.UnitPrice = view.getUnitPrice();
+            } catch (Exceptions.InvalidUnitPriceException e)
+            {
+                return;
+            }
             prenda.Quality = view.isPremiumChecked() ? Model.Enums.PrendaQuality.Premium : Model.Enums.PrendaQuality.Standard;
             Vendedor vendedor = new Vendedor(vendedorDTO.Id, vendedorDTO.Name, vendedorDTO.LastName, vendedorDTO.WorkplaceId);
             Cotizacion cotizacion = vendedor.cotizar(prenda, view.getCantidad());

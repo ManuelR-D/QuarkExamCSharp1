@@ -82,7 +82,7 @@ namespace ExamenModuloC.View
 
         public void setCotizacion(double cotizacion)
         {
-            this.labelCotizacion.Text = Convert.ToString(cotizacion);
+            this.labelCotizacion.Text = cotizacion.ToString("0.#");
         }
         public int getIdVendedor()
         {
@@ -177,7 +177,13 @@ namespace ExamenModuloC.View
 
         public int getStock()
         {
-            return Int32.Parse(this.labelStock.Text);
+            int ret;
+            if (!Int32.TryParse(this.textBoxCantidad.Text, out ret) || ret < 0)
+            {
+                MessageBox.Show("Por favor, introduzca un numero de cantidad valido", "Cantidad incorrecta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exceptions.InvalidStockException();
+            }
+            return ret;
         }
     }
 }
