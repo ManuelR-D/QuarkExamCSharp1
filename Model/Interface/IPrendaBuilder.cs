@@ -10,7 +10,6 @@ namespace ExamenModuloC.Model.Interface
     {
         public void reset();
         public void buildPrenda();
-        public void buildType();
         public void buildSubTypes();
         public void addSubtype(Enums.PrendaSubType subtype);
         public void buildQuality(Enums.PrendaQuality quality);

@@ -32,7 +32,6 @@ namespace ExamenModuloC.Model.Prendas
             this.UnitPrice = fromClone.UnitPrice;
             this.Stock = fromClone.Stock;
             this.Type = new PrendaType(CamisaType);
-            this.Type.TypeOfPrenda = fromClone.Type.TypeOfPrenda;
             //We shouldn't copy the references, but the values from the clone.
             fromClone.Type.PrendaSubTypes.ForEach(Type => this.Type.PrendaSubTypes.Add(Type));
         }

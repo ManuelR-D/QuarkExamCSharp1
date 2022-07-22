@@ -14,9 +14,9 @@ namespace ExamenModuloC.Model.Prendas
         private List<Enums.PrendaSubType> subTypes;
 
         
-        public List<Enums.PrendaSubType> PrendaSubTypes { get { return this.subTypes; } }
+        public List<Enums.PrendaSubType> PrendaSubTypes { get => this.subTypes; }
 
-        Enums.PrendaType IPrendaType.TypeOfPrenda { get => this.type; set { _ = this.type; } }
+        Enums.PrendaType IPrendaType.TypeOfPrenda { get => this.type; }
 
         public PrendaType(Enums.PrendaType type)
         {

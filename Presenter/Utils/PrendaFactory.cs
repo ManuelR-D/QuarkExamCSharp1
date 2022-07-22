@@ -21,7 +21,7 @@ namespace ExamenModuloC.Presenter.Utils
                 result.Stock = (int)node["Stock"];
                 result.Quality = (Model.Enums.PrendaQuality)(int)node["Quality"];
                 result.UnitPrice = (float)node["UnitPrice"];
-                result.Type.TypeOfPrenda = Model.Enums.PrendaType.Camisa;
+                //result.Type.TypeOfPrenda = Model.Enums.PrendaType.Camisa;
                 var subtypes = node["Type"]["PrendaSubTypes"].AsArray();
                 foreach (int subtype in subtypes)
                 {
@@ -36,7 +36,6 @@ namespace ExamenModuloC.Presenter.Utils
                 result.Stock = (int)node["Stock"];
                 result.Quality = (Model.Enums.PrendaQuality)(int)node["Quality"];
                 result.UnitPrice = (float)node["UnitPrice"];
-                result.Type.TypeOfPrenda = Model.Enums.PrendaType.Pantalon;
                 var subtypes = node["Type"]["PrendaSubTypes"].AsArray();
                 foreach (int subtype in subtypes)
                 {

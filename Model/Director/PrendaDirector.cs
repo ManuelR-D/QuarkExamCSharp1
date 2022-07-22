@@ -53,7 +53,6 @@ namespace ExamenModuloC.Model.Director
         {
             this.builder.reset();
             this.builder.buildPrenda();
-            this.builder.buildType();
             foreach (Enums.PrendaSubType subType in this.subTypes)
             {
                 this.builder.addSubtype(subType);

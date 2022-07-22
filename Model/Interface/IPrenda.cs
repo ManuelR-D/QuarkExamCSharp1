@@ -9,7 +9,7 @@ namespace ExamenModuloC.Model.Interface
     internal interface IPrenda
     {
         int Id { get; }
-        Enums.PrendaQuality Quality { get; set; }
+        Enums.PrendaQuality Quality { get; }
         double UnitPrice { get; set; }
         int Stock { get; set; }
         IPrendaType Type { get; }

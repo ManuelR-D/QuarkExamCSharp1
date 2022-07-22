@@ -35,7 +35,6 @@ namespace ExamenModuloC.Presenter
             {
                 return;
             }
-            prenda.Quality = view.isPremiumChecked() ? Model.Enums.PrendaQuality.Premium : Model.Enums.PrendaQuality.Standard;
             Vendedor vendedor = new Vendedor(vendedorDTO.Id, vendedorDTO.Name, vendedorDTO.LastName, vendedorDTO.WorkplaceId);
             Cotizacion cotizacion = vendedor.cotizar(prenda, view.getCantidad());
             (new CotizacionDaoMySQL(Program.CONNECTION_STRING)).save(cotizacion);

@@ -8,7 +8,7 @@ namespace ExamenModuloC.Model.Interface
 {
     internal interface IPrendaType
     {
-        Enums.PrendaType TypeOfPrenda { get; set; }
+        Enums.PrendaType TypeOfPrenda { get; }
         public List<Enums.PrendaSubType> PrendaSubTypes { get; }
     }
 }

@@ -28,11 +28,6 @@ namespace ExamenModuloC.Model.Builders
         {
             this.result = new Prendas.Camisa();
         }
-
-        public void buildType()
-        {
-            this.result.Type.TypeOfPrenda = Enums.PrendaType.Camisa;
-        }
         
         public void buildSubTypes()
         {
